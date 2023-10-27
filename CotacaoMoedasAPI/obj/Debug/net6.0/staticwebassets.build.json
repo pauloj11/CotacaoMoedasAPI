@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "7wR8dpoExQ46VSYkMXW0cmasDMVBXfiUPADfeSaRB/Q=",
+  "Source": "CotacaoMoedasAPI",
+  "BasePath": "_content/CotacaoMoedasAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
