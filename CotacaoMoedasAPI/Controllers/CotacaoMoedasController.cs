@@ -19,20 +19,19 @@ public class CotacaoMoedasController : ControllerBase
     {
         try
         {
-            // Construa a URL da API com as moedas de origem e destino na ordem correta
             string apiUrl = $"https://economia.awesomeapi.com.br/last/{moedaOrigem}-{moedaDestino}";
 
-            // Realize uma chamada HTTP para obter as taxas de câmbio em tempo real da AwesomeAPI
+            // realização da chamada HTTP para obter as taxas de câmbio em tempo real da AwesomeAPI
             var client = _clientFactory.CreateClient();
             var response = await client.GetAsync(apiUrl);
 
             if (response.IsSuccessStatusCode)
             {
-                // Analise a resposta em JSON e realize a conversão
+                // Analise da resposta em JSON, e conversão dos valores posteriormente
                 var cotacaoJson = await response.Content.ReadAsStringAsync();
                 var cotacao = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(cotacaoJson);
                 decimal taxaDeCambio = Convert.ToDecimal(cotacao[$"{moedaOrigem}{moedaDestino}"].bid);
-                decimal valorConvertido = valor * taxaDeCambio; // Correção aqui: multiplicar em vez de dividir
+                decimal valorConvertido = valor * taxaDeCambio;
 
                 return Ok(new
                 {
